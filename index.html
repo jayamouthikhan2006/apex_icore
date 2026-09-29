@@ -207,7 +207,7 @@ h2,h3{font-weight:700;letter-spacing:0}
  @keyframes aFade{to{opacity:1}}
 }
 </style>
-<div class="layout" id="top"><aside class="side" id="side" aria-label="Sections"><div class="side-in"><a class="side-top" href="#top">Apex-iCore<br><b>Handbook</b></a><nav><ol><li><a href="#machine3d"><span>3D</span>The machine</a></li><li><a href="#video"><span>▶</span>Demo video</a></li><li><a href="#foundry3d"><span>3D</span>Foundry tour</a></li><li><a href="#revs"><span>01</span>The design</a></li><li><a href="#revs-money"><span>02</span>Money &amp; impact</a></li><li><a href="#revs-plan"><span>03</span>Pilot &amp; team</a></li></ol></nav><div class="side-prog" aria-hidden="true"><i id="prog"></i></div><p class="side-foot">Apex-iCore design, numbers and pilot plan · 1 t/h, 500°C shakeout, Chennai air</p></div></aside><button class="side-btn" id="sideBtn" type="button" aria-controls="side" aria-expanded="false">☰ Sections</button><div class="side-scrim" id="scrim" hidden></div><main class="wrap">
+<div class="layout" id="top"><aside class="side" id="side" aria-label="Sections"><div class="side-in"><a class="side-top" href="#top">Apex-iCore<br><b>Handbook</b></a><nav><ol><li><a href="#machine3d"><span>3D</span>The machine</a></li><li><a href="#video"><span>▶</span>Demo video</a></li><li><a href="#foundry3d"><span>3D</span>Foundry tour</a></li><li><a href="#revs"><span>01</span>The design</a></li><li><a href="#revs-money"><span>02</span>Money &amp; impact</a></li><li><a href="#materials"><span>03</span>Materials &amp; fans</a></li><li><a href="#revs-plan"><span>04</span>Pilot &amp; team</a></li></ol></nav><div class="side-prog" aria-hidden="true"><i id="prog"></i></div><p class="side-foot">Apex-iCore design, numbers and pilot plan · 1 t/h, 500°C shakeout, Chennai air</p></div></aside><button class="side-btn" id="sideBtn" type="button" aria-controls="side" aria-expanded="false">☰ Sections</button><div class="side-scrim" id="scrim" hidden></div><main class="wrap">
 <section class="panel sec" id="machine3d">
   <div class="sec-head"><span class="eyebrow">APEX-iCORE · 3D model</span><h2>A machine built to harvest waste heat</h2><p class="lede2">The clash-free Apex-iCore build: tunnel, airlocks with split doors, hook rail and trolleys, settling box, four scrap pits, ducts, dampers and bag filter. Drag to orbit, scroll or pinch to zoom, right-drag to pan. Press Animation to run one 10-second index cycle on loop (real cycle: 2 minutes).</p></div>
   <div class="m3d-ctl" role="group" aria-label="Machine view">
@@ -501,8 +501,81 @@ renderer.setAnimationLoop(()=>{ const dt=clock.getDelta(); if(playing&&mixer) mi
   </div>
   <p class="note">Tariff: ₹7.50/kWh + 25% time-of-day on 8 of 16 hours + 5% tax = ₹8.859/kWh (TN HT) · demand charge ₹608/kVA/month · CEA grid factor 0.710 t CO₂/MWh · industry figures from IFC and IFEX 2026. Build costs are planning estimates; replace them with quotes.</p>
 </section>
+<style>.mtab{min-width:760px}.mtab td.num{white-space:normal}.mtab .v1{color:var(--warn)}.mtab .v2{color:var(--ember)}#materials h3{font-size:22px;margin-top:6px}</style>
+<section class="panel sec" id="materials">
+  <div class="sec-head"><span class="eyebrow">03 · Materials, fan speed and time in the tunnel</span><h2>One tunnel, twelve alloys: set the fan, keep the strength</h2><p class="lede2">Locked design: 20 m tunnel, 0.9 × 0.9 m, 1 t/h, 33 kg sets, 28 mm equivalent section. Results are 1D model predictions, not measurements.</p></div>
+
+  <h3>Fan speed and time inside the tunnel</h3>
+  <p>Main fan rated 0.25 kg/s (≈ 785 m³/h) at 50 Hz; flow is set on the VFD. The conveyor is the same for every material: 0.143 m/min, one 33 kg set every 2 min, 0.29 m hook pitch, <b>140 min inside</b>. Airflow matches each material's heat-capacity rate (about 1.05×).</p>
+  <div class="tbl"><table class="mtab">
+    <thead><tr><th>Material</th><th>Enters</th><th>Main fan (kg/s · m³/h · Hz)</th><th>Stirring fans</th><th>Reaches 150°C</th><th>Exits</th><th>Heat to scrap</th></tr></thead>
+    <tbody>
+      <tr><td>Grey iron</td><td class="num">500°C</td><td class="num">0.161 · 508 · 32 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">116 min</td><td class="num">111°C</td><td class="num">43.0 kWh/t</td></tr>
+      <tr><td>Ductile iron</td><td class="num">500°C</td><td class="num">0.161 · 508 · 32 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">116 min</td><td class="num">110°C</td><td class="num">43.0 kWh/t</td></tr>
+      <tr><td>High-Cr white iron</td><td class="num">500°C</td><td class="num">0.153 · 481 · 31 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">117 min</td><td class="num">113°C</td><td class="num">41.2 kWh/t</td></tr>
+      <tr><td>Carbon steel (WCB)</td><td class="num">500°C</td><td class="num">0.161 · 508 · 32 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">120 min</td><td class="num">117°C</td><td class="num">42.3 kWh/t</td></tr>
+      <tr><td>Ni-Cr-Mo alloy steel</td><td class="num">500°C</td><td class="num">0.161 · 508 · 32 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">120 min</td><td class="num">117°C</td><td class="num">42.3 kWh/t</td></tr>
+      <tr><td>Stainless CF8M</td><td class="num">500°C</td><td class="num">0.152 · 478 · 30 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">125 min</td><td class="num">127°C</td><td class="num">39.5 kWh/t</td></tr>
+      <tr><td>Duplex CD4MCuN</td><td class="num">500°C</td><td class="num">0.151 · 476 · 30 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">124 min</td><td class="num">125°C</td><td class="num">39.5 kWh/t</td></tr>
+      <tr><td>Aluminium A356</td><td class="num">400°C</td><td class="num">0.238 · 748 · 48 Hz</td><td class="num">4 m/s (50 Hz)</td><td class="num">120 min</td><td class="num">107°C</td><td class="num">42.9 kWh/t</td></tr>
+      <tr><td>Aluminium LM6</td><td class="num">400°C</td><td class="num">0.235 · 740 · 47 Hz</td><td class="num">4 m/s (50 Hz)</td><td class="num">120 min</td><td class="num">106°C</td><td class="num">43.0 kWh/t</td></tr>
+      <tr><td>Gunmetal LG2</td><td class="num">450°C</td><td class="num">0.113 · 354 · 23 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">116 min</td><td class="num">114°C</td><td class="num">27.2 kWh/t</td></tr>
+      <tr><td>Leaded brass</td><td class="num">450°C</td><td class="num">0.114 · 358 · 23 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">115 min</td><td class="num">112°C</td><td class="num">27.7 kWh/t</td></tr>
+      <tr><td>Aluminium bronze</td><td class="num">450°C</td><td class="num">0.129 · 406 · 26 Hz</td><td class="num">2 m/s (25 Hz)</td><td class="num">113 min</td><td class="num">108°C</td><td class="num">31.5 kWh/t</td></tr>
+      </tbody>
+  </table></div>
+  <p class="note">Air speed in the tunnel: 0.17 m/s (cold end) to 0.38 m/s (hot end) for irons; 0.26 to 0.55 m/s for aluminium. Aluminium needs more air and 4 m/s stirring because its emissivity is low (~0.2).</p>
+
+  <h3>Metallurgy check: strength and properties unchanged</h3>
+  <div class="tbl"><table class="mtab">
+    <thead><tr><th>Material</th><th>Cooling rate to 150°C</th><th>Time in risky range</th><th>Effect on strength</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Grey and ductile iron</td><td class="num">181°C/h</td><td>None; entry well below eutectoid (~730°C), matrix fixed in mould</td><td>None</td><td>Yes</td></tr>
+      <tr><td>High-Cr white iron</td><td class="num">179°C/h</td><td>None</td><td>None; hardening done afterwards anyway</td><td>Yes</td></tr>
+      <tr><td>Carbon steel (WCB)</td><td class="num">175°C/h</td><td>None (below A1)</td><td>None; normalise/temper afterwards per spec</td><td>Yes</td></tr>
+      <tr><td>Ni-Cr-Mo steel</td><td class="num">175°C/h</td><td><b>27 min</b> in 375–500°C temper-embrittlement band</td><td>Embrittlement needs hours; Q&amp;T afterwards resets it</td><td>Yes (Q&amp;T after)</td></tr>
+      <tr><td>CF8M stainless</td><td class="num">167°C/h</td><td><b>5 min</b> in 450–500°C</td><td>Sensitisation needs hours; solution-anneal afterwards</td><td>Yes</td></tr>
+      <tr><td>Duplex</td><td class="num">169°C/h</td><td><b>19 min</b> in 400–500°C</td><td>475°C embrittlement needs hours; solution-anneal afterwards</td><td>Yes</td></tr>
+      <tr><td>Aluminium A356</td><td class="num">125°C/h (from 400°C)</td><td><b>97 min</b> in 200–400°C over-ageing band</td><td>Lost only if supplied as-cast or T5; T6 re-dissolves it</td><td><b class="v1">T6 orders only</b></td></tr>
+      <tr><td>Aluminium LM6</td><td class="num">125°C/h</td><td>None (not heat-treatable)</td><td>None</td><td>Yes</td></tr>
+      <tr><td>Gunmetal, leaded brass</td><td class="num">155–157°C/h</td><td>None</td><td>None; slower cooling reduces residual stress</td><td>Yes</td></tr>
+      <tr><td>Aluminium bronze</td><td class="num">160°C/h</td><td>None (entry below 565°C eutectoid)</td><td>None</td><td>Yes</td></tr>
+      <tr><td>Magnesium AZ91</td><td class="num">–</td><td>–</td><td>Fire risk</td><td><b class="v2">No</b></td></tr>
+      <tr><td>Zn, Pb, Sn alloys</td><td class="num">–</td><td>–</td><td>Too low-melting for this process</td><td><b class="v2">No</b></td></tr>
+      </tbody>
+  </table></div>
+  <div class="keys">
+    <div><b>Gentler than the floor</b><ul><li>The tunnel takes 133–137 min to reach 120°C vs 75–98 min on the floor (about 1.6–1.8× slower), so cracking risk drops.</li></ul></div>
+    <div><b>Thin-vs-thick difference</b><ul><li>131°C in the tunnel vs 250°C on the floor for irons; stress falls from 0.5–0.6 to 0.25–0.3 of UTS.</li></ul></div>
+    <div><b>Tightest cases</b><ul><li>Stainless, aluminium and gunmetal reach about 0.5–0.6 of UTS in the tunnel (0.8–1.0 on the floor), so keep section changes gradual.</li></ul></div>
+    <div><b>Hooks</b><ul><li>Aluminium at 400°C is very weak: use mesh trays, no piercing hooks, no heavy hanging loads.</li></ul></div>
+    <div><b>Leaded alloys</b><ul><li>Lead is liquid above 327°C; avoid shock or heavy hook load until below that.</li></ul></div>
+  </div>
+
+  <h3>Thick castings (75 mm equivalent): half-throughput mode</h3>
+  <p>At normal settings a 75 mm section exits at 195–214°C and recovery falls to ~33 kWh/t. For thick castings run half throughput with half the airflow.</p>
+  <div class="tbl"><table class="mtab">
+    <thead><tr><th>Material</th><th>Fan (kg/s)</th><th>Hook interval</th><th>Time inside</th><th>Reaches 150°C</th><th>Exits</th></tr></thead>
+    <tbody>
+      <tr><td>Irons</td><td class="num">0.077–0.081</td><td class="num">4 min</td><td class="num"><b>280 min</b></td><td class="num">243–245 min</td><td class="num">123–126°C</td></tr>
+      <tr><td>Steels</td><td class="num">0.081</td><td class="num">4 min</td><td class="num"><b>280 min</b></td><td class="num">253 min</td><td class="num">132°C</td></tr>
+      <tr><td>Stainless / duplex</td><td class="num">0.076</td><td class="num">4 min</td><td class="num"><b>280 min</b></td><td class="num">266–269 min</td><td class="num">142–144°C</td></tr>
+      <tr><td>Aluminium</td><td class="num">0.118–0.119</td><td class="num">4 min</td><td class="num"><b>280 min</b></td><td class="num">245 min</td><td class="num">117–119°C</td></tr>
+      <tr><td>Copper alloys</td><td class="num">0.056–0.065</td><td class="num">4 min</td><td class="num"><b>280 min</b></td><td class="num">236–246 min</td><td class="num">121–128°C</td></tr>
+      </tbody>
+  </table></div>
+  <p class="note">Thin sections (10 mm) exit at 59–73°C and recover about 45–48 kWh/t. Below about 20 Hz use a damper or bypass instead of running the motor slower.</p>
+
+  <h3>Panel settings and limits</h3>
+  <div class="keys">
+    <div><b>On the panel</b><ul><li>Recipe: alloy, fan Hz, stirring m/s, hook interval. Exit IR pyrometer confirms ≤ 150°C.</li></ul></div>
+    <div><b>Operating rules</b><ul><li>Maximum entry temperature about 550°C.</li><li>One alloy family at a time, with separate scrap baskets.</li></ul></div>
+  </div>
+  <p class="callout2"><b>Limits:</b> model predictions, not measurements. Metallurgical time limits are handbook order-of-magnitude values, not a kinetic simulation. Stresses use room-temperature modulus and UTS (conservative, especially for aluminium and copper). Actual section thickness decides which mode to use.</p>
+</section>
+
 <section class="panel sec" id="revs-plan">
-  <div class="sec-head"><span class="eyebrow">03 · Pilot, team and vision</span><h2>From model to measured savings in 15 months</h2><p class="lede2">Maturity today: system TRL 3, parts TRL 8–9. Designed, modelled and simulated; not yet tested with real castings and scrap.</p></div>
+  <div class="sec-head"><span class="eyebrow">04 · Pilot, team and vision</span><h2>From model to measured savings in 15 months</h2><p class="lede2">Maturity today: system TRL 3, parts TRL 8–9. Designed, modelled and simulated; not yet tested with real castings and scrap.</p></div>
   <ol class="timeline">
     <li class="now"><b>Months 0–3 · Bench test</b><span>2.5 m tunnel section with real castings: radiation, fins, fans.</span></li>
     <li><b>Months 2–4 · Single hot pit</b><span>Real scrap and a 400°C heater: downflow, bed pressure drop, sand seals.</span></li>
